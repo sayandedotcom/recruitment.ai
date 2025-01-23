@@ -1,84 +1,148 @@
-# Turborepo starter
+# Resume Ranking Application
 
-This is an official starter Turborepo.
+## Overview
 
-## Using this example
+The Resume Ranking Application is an AI-powered recruitment tool that leverages Large Language Models (LLM) and advanced NLP techniques to automatically evaluate, analyze, and rank resumes based on job requirements. Built with FastAPI, Next.js, and OpenAI's GPT models, it provides intelligent candidate-job matching with detailed scoring and analysis.
 
-Run the following command:
+## Demo Video
 
-```sh
-npx create-turbo@latest
-```
+[![Resume Ranking Application Demo](https://img.youtube.com/vi/Gd178Pd48Q4/0.jpg)](https://youtu.be/Gd178Pd48Q4)
 
-## What's inside?
+Click the image above to watch the demo video on YouTube.
 
-This Turborepo includes the following packages/apps:
+## Architecture
 
-### Apps and Packages
+<p align="center">
+  <img src="./assets/architecture.png" alt="Architecture" />
+  <br>
+  <em>System Architecture</em>
+</p>
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+## Key Technologies
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- **Backend**: FastAPI, Flask, MongoDB
+- **Frontend**: Next.js, TypeScript, TailwindCSS
+- **AI/ML**: OpenAI GPT models, LangChain
+- **Infrastructure**: Docker, Nginx, GitHub Actions, AWS
 
-### Utilities
+## Features
 
-This Turborepo has some additional tools already setup for you:
+### Job Description Analysis
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+- **Intelligent JD Parsing**:
+  - Extracts key requirements, skills, and qualifications using LLM
+  - Structures data into standardized format for matching
+  - Supports multiple languages through GPT's multilingual capabilities
+  - Average processing time: 3 seconds
 
-### Build
+### Resume Analysis
 
-To build all apps and packages, run the following command:
+- **Advanced CV Processing**:
+  - Handles PDF and Word documents
+  - Extracts and structures candidate information using LLM
+  - Identifies skills, experience, and qualifications
+  - Supports multilingual resumes
+  - Average processing time: 5-10 seconds
 
-```
-cd my-turborepo
-pnpm build
-```
+### AI-Powered Matching
 
-### Develop
+- **Sophisticated Matching Algorithm**:
+  - Uses LangChain for orchestrating complex LLM operations
+  - Function calling for structured data extraction
+  - Semantic understanding of job requirements and candidate qualifications
+  - Many-to-many relationship support
+  - Average processing time: 3-5 seconds
 
-To develop all apps and packages, run the following command:
+### Intelligent Ranking
 
-```
-cd my-turborepo
-pnpm dev
-```
+- **Smart Evaluation System**:
+  - Generates detailed match analysis using GPT models
+  - Provides scoring based on multiple criteria
+  - Offers AI-generated feedback and comments
+  - Ranks candidates based on overall fit
 
-### Remote Caching
+## Technical Features
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+- **FastAPI Integration**:
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+  - Async request handling
+  - Automatic API documentation with Swagger UI
+  - Type validation with Pydantic models
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+- **LangChain Implementation**:
 
-```
-cd my-turborepo
-npx turbo login
-```
+  - Custom prompt engineering
+  - Structured output parsing
+  - Chain of thought reasoning
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+- **OpenAI Function Calling**:
+  - Structured data extraction
+  - Consistent output formatting
+  - Enhanced control over LLM responses
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+## Documentation
 
-```
-npx turbo link
-```
+Detailed documentation on system architecture, API endpoints, and configuration options is available in the [User Guide](./assets/presentation.pdf).
 
-## Useful Links
+## Getting Started
 
-Learn more about the power of Turborepo:
+1. **Clone the Repository**:
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+   ```bash
+   git clone https://github.com/vectornguyen76/resume-ranking.git
+   ```
+
+2. **Configure Environment**:
+
+   - Set up OpenAI API key:
+
+     ```bash
+     # analysis_service/.env
+     OPENAI_API_KEY="your-key"
+     ```
+
+   - Configure frontend API URL:
+
+     ```bash
+     # frontend/.env.production
+     NEXT_PUBLIC_API_URL=http://<your-ip-address>/backend
+     ```
+
+3. **Build and Run**:
+
+   ```bash
+   cd resume-ranking
+   docker compose build
+   docker compose up
+   ```
+
+4. **Access Application**:
+   - Frontend: `http://your-ip-address`
+
+## Development
+
+- **Code Quality**:
+
+  - Ruff for Python linting
+  - ESLint for TypeScript/JavaScript
+  - Pre-commit hooks for code formatting
+
+- **Testing**:
+
+  - Unit tests with pytest
+  - Integration tests for API endpoints
+  - Frontend testing with React Testing Library
+
+- **CI/CD**:
+  - Automated testing with GitHub Actions
+  - Docker image builds
+  - Deployment automation
+
+## Contributors
+
+- [Pham Phu Ngoc Trai](https://github.com/jayllfpt)
+- [Vector Nguyen](https://github.com/vectornguyen76)
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
