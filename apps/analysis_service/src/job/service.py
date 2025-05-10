@@ -20,7 +20,7 @@ def analyse_job(job_data):
     LOGGER.info("Start analyse job")
 
     llm = ChatOpenAI(model=job_config.MODEL_NAME, temperature=0.5)
-    completion = llm.predict_messages(
+    completion = llm.invoke(
         [
             SystemMessage(content=system_prompt_job),
             HumanMessage(content=job_data.job_description),

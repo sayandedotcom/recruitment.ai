@@ -65,7 +65,7 @@ def analyse_candidate(cv_content):
     LOGGER.info("Start analyse candidate")
 
     llm = ChatOpenAI(model=candidate_config.MODEL_NAME, temperature=0.5)
-    completion = llm.predict_messages(
+    completion = llm.invoke(
         [
             SystemMessage(content=system_prompt_candidate),
             HumanMessage(content=cv_content),

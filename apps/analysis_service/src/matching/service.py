@@ -27,7 +27,7 @@ def analyse_matching(matching_data):
     content = generate_content(job=matching_data.job, candidate=matching_data.candidate)
 
     llm = ChatOpenAI(model=matching_config.MODEL_NAME, temperature=0.5)
-    completion = llm.predict_messages(
+    completion = llm.invoke(
         [
             SystemMessage(content=system_prompt_matching),
             HumanMessage(content=content),
