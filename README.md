@@ -1,10 +1,12 @@
 # Resume Ranking Application ( Under Development )
 
-- AI Part (Done ✅)
-- Frontend (Under Development)
-- Backend (Under Development)
-- Deployment (Under Development)
-- Documentation (Under Development)
+- **AI Part** (Done ✅)
+- **Frontend** (Under Development)
+- **Backend** (Under Development)
+- **Deployment** (Under Development)
+- **Documentation** (Under Development)
+
+# Feature Overview
 
 - ✅ AI-Powered Recruitment Tool for Intelligent Candidate-Job Matching
 - 🚀 Built with FastAPI, Next.js, and OpenAI's GPT Model
