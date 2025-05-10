@@ -1,16 +1,16 @@
 # Resume Ranking Application ( Under Development )
 
-✅ AI Part
-❌ Frontend
-❌ Backend
-❌ Deployment
-❌ Documentation
+- AI Part (Done ✅)
+- Frontend (Under Development)
+- Backend (Under Development)
+- Deployment (Under Development)
+- Documentation (Under Development)
 
-✅ AI-Powered Recruitment Tool for Intelligent Candidate-Job Matching
-🚀 Built with FastAPI, Next.js, and OpenAI's GPT Model
-🔍 Advanced Resume and Job Description Analysis
-📊 Detailed Scoring and Analysis
-📈 Intelligent Ranking System
+- ✅ AI-Powered Recruitment Tool for Intelligent Candidate-Job Matching
+- 🚀 Built with FastAPI, Next.js, and OpenAI's GPT Model
+- 🔍 Advanced Resume and Job Description Analysis
+- 📊 Detailed Scoring and Analysis
+- 📈 Intelligent Ranking System
 
 ## Overview
 
@@ -30,7 +30,7 @@ Click the image above to watch the demo video on YouTube.
 
 - **Backend**: FastAPI, Flask, MongoDB
 - **Frontend**: Next.js, TypeScript, TailwindCSS
-- **AI/ML**: OpenAI GPT models, LangChain
+- **AI/ML**: OpenAI GPT models, LangChain, LangGraph
 - **Infrastructure**: Docker, Nginx, GitHub Actions, AWS
 
 ## Features
@@ -97,7 +97,7 @@ Detailed documentation on system architecture, API endpoints, and configuration 
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/vectornguyen76/resume-ranking.git
+   git clone https://github.com/sayandedotcom/recruitment.ai
    ```
 
 2. **Configure Environment**:
@@ -145,11 +145,6 @@ Detailed documentation on system architecture, API endpoints, and configuration 
   - Automated testing with GitHub Actions
   - Docker image builds
   - Deployment automation
-
-## Contributors
-
-- [Pham Phu Ngoc Trai](https://github.com/jayllfpt)
-- [Vector Nguyen](https://github.com/vectornguyen76)
 
 ## License
 
