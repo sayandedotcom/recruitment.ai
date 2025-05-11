@@ -1,102 +1,115 @@
-import Image, { type ImageProps } from "next/image";
-import { Button } from "@repo/ui/button";
-import styles from "./page.module.css";
+"use client";
 
-type Props = Omit<ImageProps, "src"> & {
-  srcLight: string;
-  srcDark: string;
-};
+import { motion } from "framer-motion";
+import { ArrowRight, Grid, Newspaper, User } from "lucide-react";
 
-const ThemeImage = (props: Props) => {
-  const { srcLight, srcDark, ...rest } = props;
-
-  return (
-    <>
-      <Image {...rest} src={srcLight} className="imgLight" />
-      <Image {...rest} src={srcDark} className="imgDark" />
-    </>
-  );
-};
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <ThemeImage
-          className={styles.logo}
-          srcLight="turborepo-dark.svg"
-          srcDark="turborepo-light.svg"
-          alt="Turborepo logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>apps/web/app/page.tsx</code>
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="relative overflow-hidden bg-gray-950 p-8 md:p-12 min-h-screen">
+      {/* Grid Pattern Background */}
+      <div className="absolute inset-0 grid grid-cols-[repeat(40,minmax(0,1fr))] grid-rows-[repeat(40,minmax(0,1fr))] opacity-[0.15]">
+        {Array.from({ length: 1600 }).map((_, i) => (
+          <div key={i} className="border-[0.5px] border-gray-100/30" />
+        ))}
+      </div>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new/clone?demo-description=Learn+to+implement+a+monorepo+with+a+two+Next.js+sites+that+has+installed+three+local+packages.&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F4K8ZISWAzJ8X1504ca0zmC%2F0b21a1c6246add355e55816278ef54bc%2FBasic.png&demo-title=Monorepo+with+Turborepo&demo-url=https%3A%2F%2Fexamples-basic-web.vercel.sh%2F&from=templates&project-name=Monorepo+with+Turborepo&repository-name=monorepo-turborepo&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fturborepo%2Ftree%2Fmain%2Fexamples%2Fbasic&root-directory=apps%2Fdocs&skippable-integrations=1&teamSlug=vercel&utm_source=create-turbo"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://turbo.build/repo/docs?utm_source"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-        <Button appName="web" className={styles.secondary}>
-          Open alert
-        </Button>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com/templates?search=turborepo&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      {/* Corner Badges */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        className="absolute top-8 left-8"
+      >
+        <Badge
+          variant="outline"
+          className="flex items-center gap-1 bg-gray-950/50 backdrop-blur-sm"
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://turbo.build?utm_source=create-turbo"
-          target="_blank"
-          rel="noopener noreferrer"
+          <User className="w-3 h-3" />
+          Beta
+        </Badge>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.4 }}
+        className="absolute top-8 right-8"
+      >
+        <Link
+          href="/login"
+          className={`flex items-center gap-1 cursor-pointer ${buttonVariants()}`}
         >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to turbo.build →
-        </a>
-      </footer>
+          Log In
+          {/* <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" /> */}
+        </Link>
+      </motion.div>
+
+      {/* Main Content */}
+      <div className="relative z-10 max-w-5xl mx-auto pt-24 text-center">
+        {/* AI Icon */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="relative w-16 h-16 mx-auto mb-8"
+        >
+          <div className="absolute inset-0 rounded-2xl bg-orange-500/80 blur-xl" />
+          <div className="relative bg-gray-900 rounded-2xl p-4 shadow-lg">
+            <span className="font-bold text-orange-500">AI</span>
+          </div>
+        </motion.div>
+
+        {/* Company Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+        >
+          <Badge variant="secondary" className="mb-8 bg-gray-900">
+            <Link href="https://www.sayande.com/">Built by sayande.com</Link>
+          </Badge>
+        </motion.div>
+
+        {/* Headings */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-4xl md:text-6xl font-bold tracking-tight mb-4"
+        >
+          AI-Powered resume
+          <br />
+          <span className="text-gray-500">filtering</span>
+        </motion.h1>
+
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="text-gray-400 text-xl mb-8 max-w-2xl mx-auto"
+        >
+          Let AI instantly screen resumes, surface top talent, and eliminate
+          hours of manual work—so you can focus on hiring, not filtering.
+        </motion.p>
+
+        {/* CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+        >
+          <Link
+            href="/dashboard"
+            className={`group ${buttonVariants({ size: "lg" })}`}
+          >
+            Go to dashboard
+            <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </motion.div>
+      </div>
     </div>
   );
 }

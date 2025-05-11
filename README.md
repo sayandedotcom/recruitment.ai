@@ -8,11 +8,11 @@
 
 # Feature Overview
 
-- ✅ AI-Powered Recruitment Tool for Intelligent Candidate-Job Matching
-- 🚀 Built with FastAPI, Next.js, and OpenAI's GPT Model
-- 🔍 Advanced Resume and Job Description Analysis
-- 📊 Detailed Scoring and Analysis
-- 📈 Intelligent Ranking System
+- **✅ AI-Powered Recruitment Tool for Intelligent Candidate-Job Matching**
+- **🚀 Built with FastAPI, Next.js, and OpenAI's GPT Model**
+- **🔍 Advanced Resume and Job Description Analysis**
+- **📊 Detailed Scoring and Analysis**
+- **📈 Intelligent Ranking System**
 
 ## Overview
 
