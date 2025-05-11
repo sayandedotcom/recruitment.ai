@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Grid, Newspaper, User } from "lucide-react";
+import { ArrowRight, Wrench } from "lucide-react";
 
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 
@@ -27,8 +27,8 @@ export default function Home() {
           variant="outline"
           className="flex items-center gap-1 bg-gray-950/50 backdrop-blur-sm"
         >
-          <User className="w-3 h-3" />
-          Beta
+          <Wrench className="w-3 h-3" />
+          Under Development
         </Badge>
       </motion.div>
 

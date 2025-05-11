@@ -15,7 +15,7 @@ export type Payment = {
   action: string;
 };
 
-export const columns: ColumnDef<Payment>[] = [
+const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: "id",
     header: "Id",
@@ -60,7 +60,7 @@ export const columns: ColumnDef<Payment>[] = [
 //   ];
 // }
 
-export default function DemoPage() {
+function DemoPage() {
   const data = [
     {
       id: "728ed52f",
@@ -72,7 +72,9 @@ export default function DemoPage() {
 
   return (
     <div className="container mx-auto py-10">
-      <DataTable columns={columns} data={data} />
+      {/* <DataTable columns={columns} data={data} /> */}
     </div>
   );
 }
+
+export default DemoPage;

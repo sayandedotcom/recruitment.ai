@@ -3,16 +3,12 @@
 import * as React from "react";
 import {
   AudioWaveform,
-  BookOpen,
   Bot,
   BriefcaseBusiness,
   Command,
-  Frame,
   GalleryVerticalEnd,
   Gauge,
   GraduationCap,
-  Map,
-  PieChart,
   Settings2,
   SquareTerminal,
 } from "lucide-react";
