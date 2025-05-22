@@ -2,7 +2,7 @@ import json
 import time
 
 import jsbeautifier
-from langchain.schema import HumanMessage, SystemMessage
+from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from src.job.config import job_config
 from src.job.prompts import fn_job_analysis, system_prompt_job

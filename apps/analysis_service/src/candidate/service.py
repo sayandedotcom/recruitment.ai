@@ -4,7 +4,7 @@ import time
 from datetime import datetime
 
 import jsbeautifier
-from langchain.schema import HumanMessage, SystemMessage
+from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_community.document_loaders import Docx2txtLoader, PyPDFLoader
 from langchain_openai import ChatOpenAI
 from src.candidate.config import candidate_config
