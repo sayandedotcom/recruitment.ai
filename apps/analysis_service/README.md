@@ -2,7 +2,6 @@
 
 ## Development Environment
 
-<!--
 1. **Create Environment and Install Packages**
 
    ```shell
@@ -17,10 +16,8 @@
    pip install -r requirements.txt
    ```
 
-2. -->
+2. **Run the Application**
 
-**Run the Application**
-
-```shell
-uvicorn app:app --port 7000
-```
+   ```shell
+   uvicorn app:app --port 7000
+   ```

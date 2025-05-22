@@ -210,3 +210,6 @@ migrations/
 
 # BBDD
 *.db
+
+credentials.json
+token.json
