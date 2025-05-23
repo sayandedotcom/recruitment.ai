@@ -1,7 +1,14 @@
 from typing_extensions import TypedDict
+from pydantic import BaseModel
+
+class MatchingSchema(BaseModel):
+    candidate: dict
+    job: dict
+
 
 class State(TypedDict):
-    application: str
-    experience_level: str
-    skill_match : str
-    response: str
+    job: str
+    candidate: str
+    score: str
+    candidate_email: str
+    response: dict
