@@ -1,16 +1,22 @@
-from fastapi import APIRouter, File, UploadFile
-from src.analysis import service
+from src.analysis.schemas import MatchingSchema
+from src.analysis.graph import Workflow 
 
+from fastapi import APIRouter
+
+# Instantiate the router
 router = APIRouter()
 
+# Import the workflow from the graph module
+workflow = Workflow()
+app = workflow.app
 
-# @router.post("/analyse", response_model=ResponseSchema)
-@router.post("/analyse")
-async def analyse_candidate(file: UploadFile = File(...)):
-    # if file.content_type != 'application/json':
-    #     raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Wow, That's not allowed")
-
-
-    result = service.run_candidate_screening(application=file.file.read())
-
-    return result
+# @router.post("/rank", response_model=ResponseSchema)
+@router.post("/rank")
+async def analyse_matching(matching_data: MatchingSchema):
+    
+    result= app.invoke({
+        "job" : matching_data.job,
+        "candidate" : matching_data.candidate
+    })
+    
+    return result["response"]
