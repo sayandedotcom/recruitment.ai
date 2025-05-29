@@ -15,5 +15,8 @@ async def analyse_candidate(file: UploadFile = File(...)):
     cv_content = service.read_cv_candidate(file_name=file_name)
 
     result = service.analyse_candidate(cv_content=cv_content)
+    
+    if not result:
+        return {"error": "Failed to analyse candidate"}
 
     return result
