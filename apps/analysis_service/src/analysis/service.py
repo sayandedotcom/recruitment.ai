@@ -1,9 +1,7 @@
 import json
 import jsbeautifier
 
-from src.analysis.config import analysis_config
-
-from langchain_openai import ChatOpenAI
+from langchain_openai.chat_models import ChatOpenAI
 
 class Service:
     def __init__(self):
@@ -12,7 +10,7 @@ class Service:
     def _init_llm(self):
         """Initializes and returns the LLM model."""
         return ChatOpenAI(
-            model= analysis_config.MODEL_NAME,
+            model="openai/gpt-4.1",
         )
     
     def output2json(self, output) -> dict:

@@ -7,8 +7,8 @@ class MatchingSchema(BaseModel):
 
 
 class State(TypedDict):
-    job: str
-    candidate: str
+    job: dict
+    candidate: dict
     score: str
     candidate_email: str
     response: dict

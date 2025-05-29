@@ -1,11 +1,9 @@
 import time
-import json
 
 from src.analysis.service import Service
 from src.analysis.schemas import State
 from src.analysis.prompts import system_prompt_matching, fn_matching_analysis, accept_email_system_prompt, reject_email_system_prompt
 from src.analysis.tools.email.email import send_email
-
 from src.utils import LOGGER
 
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -64,7 +62,7 @@ class Nodes:
         return {
             "response": json_output,
             "score": final_score,
-            "candidate_email":  json.loads(state["candidate"])["email"],
+            "candidate_email": state["candidate"]["email"],
         }
     
     def accept_email_node(self, state: State) -> State:
