@@ -24,27 +24,12 @@ export default function Home() {
         className="absolute top-8 left-8"
       >
         <Badge
-          variant="outline"
-          className="flex items-center gap-1 bg-gray-950/50 backdrop-blur-sm"
+          variant="default"
+          className="flex items-center gap-1 backdrop-blur-sm"
         >
           <Wrench className="w-3 h-3" />
           Under Development
         </Badge>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.4 }}
-        className="absolute top-8 right-8"
-      >
-        <Link
-          href="/login"
-          className={`flex items-center gap-1 cursor-pointer ${buttonVariants()}`}
-        >
-          Log In
-          {/* <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" /> */}
-        </Link>
       </motion.div>
 
       {/* Main Content */}
@@ -67,7 +52,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <Badge variant="secondary" className="mb-8 bg-gray-900">
+          <Badge variant="secondary" className="mb-8">
             <Link href="https://www.sayande.com/">Built by sayande.com</Link>
           </Badge>
         </motion.div>
@@ -77,7 +62,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-4xl md:text-6xl font-bold tracking-tight mb-4"
+          className="text-4xl md:text-6xl font-bold tracking-tight mb-4 text-secondary"
         >
           AI-Powered resume
           <br />
@@ -102,8 +87,8 @@ export default function Home() {
           transition={{ delay: 0.4 }}
         >
           <Link
-            href="/dashboard"
-            className={`group ${buttonVariants({ size: "lg" })}`}
+            href="/dashboard/jobs"
+            className={`group ${buttonVariants({ size: "lg", variant: "secondary" })}`}
           >
             Go to dashboard
             <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
@@ -112,4 +97,25 @@ export default function Home() {
       </div>
     </div>
   );
+}
+
+{
+  /* <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.4 }}
+        className="absolute top-8 right-8"
+      >
+        <Link
+          href="/login"
+          className={`flex items-center gap-1 cursor-pointer ${buttonVariants()}`}
+        >
+          Log In */
+}
+{
+  /* <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" /> */
+}
+{
+  /* </Link>
+      </motion.div> */
 }
