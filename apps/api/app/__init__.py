@@ -3,9 +3,9 @@ import os
 from app.blueprint import register_routing
 from app.db import mongo
 from app.extention import cors
-# from app.utils.logging import configure_logging
-from flask import Flask
+from app.utils.logging import configure_logging
 
+from flask import Flask  
 
 def create_app(settings_module):
     app = Flask(__name__)
@@ -16,7 +16,7 @@ def create_app(settings_module):
     cors.init_app(app, supports_credentials="true", resources={r"*": {"origins": "*"}})
 
     # Logging configuration
-    # configure_logging(app)
+    configure_logging(app)
 
     # Register Blueprint
     register_routing(app)
