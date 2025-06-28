@@ -1,12 +1,6 @@
-# Resume Ranking Application ( Under Development )
+# Resume Ranking Application
 
-- **AI Part** (Done ✅)
-- **Frontend** (Under Development)
-- **Backend** (Under Development)
-- **Deployment** (Under Development)
-- **Documentation** (Under Development)
-
-# Feature Overview
+## Feature Overview
 
 - **✅ AI-Powered Recruitment Tool for Intelligent Candidate-Job Matching**
 - **🚀 Built with FastAPI, Next.js, and OpenAI's GPT Model**
@@ -111,25 +105,18 @@ Detailed documentation on system architecture, API endpoints, and configuration 
      OPENAI_API_KEY="your-key"
      ```
 
-   - Configure frontend API URL:
-
-     ```bash
-     # frontend/.env.production
-     NEXT_PUBLIC_API_URL=http://<your-ip-address>/backend
-     ```
-
 3. **Build and Run**:
 
    ```bash
-   cd resume-ranking
+   cd recruitment.ai
    docker compose build
    docker compose up
    ```
 
 4. **Access Application**:
-   - Frontend: `http://your-ip-address`
+   - Frontend: `http://localhost:8080/`
 
-## Development
+<!-- ## Development
 
 - **Code Quality**:
 
@@ -146,7 +133,7 @@ Detailed documentation on system architecture, API endpoints, and configuration 
 - **CI/CD**:
   - Automated testing with GitHub Actions
   - Docker image builds
-  - Deployment automation
+  - Deployment automation -->
 
 ## License
 
