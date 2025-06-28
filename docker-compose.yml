@@ -1,0 +1,50 @@
+services:
+  mongo_db:
+    container_name: mongo_db
+    image: mvertes/alpine-mongo:latest
+    volumes:
+      - mongo_data:/data/db/
+    restart: always
+    ports:
+      - 27017:27017
+  api:
+    depends_on:
+      - mongo_db
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile.dev
+    env_file:
+      - ./apps/api/.env
+    volumes:
+      - ./apps/api:/app
+  analysis_service:
+    build:
+      context: ./apps/analysis_service
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./apps/analysis_service:/app
+      - ./apps/analysis_service/logs:/app/logs
+      - ./apps/analysis_service/candidate_cv:/app/candidate_cv
+  web:
+    depends_on:
+      - api
+      - analysis_service
+    build:
+      context: .
+      dockerfile: ./apps/web/Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+  nginx_service:
+    depends_on:
+      - web
+      - api
+      - analysis_service
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    ports:
+      - 8080:80
+volumes:
+  mongo_data:
