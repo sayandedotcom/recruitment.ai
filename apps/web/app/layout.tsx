@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import ReactQueryWrapper from "@/providers/react-query";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,10 +24,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans bg-gray-50`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans`}>
+        <ReactQueryWrapper>{children}</ReactQueryWrapper>
       </body>
     </html>
   );

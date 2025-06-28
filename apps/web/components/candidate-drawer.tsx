@@ -14,7 +14,7 @@ import {
 
 const SHEET_SIDES = ["right"] as const;
 
-export function JobSheet({
+export function CandidateSheet({
   children,
   data,
   isFetching,
@@ -22,7 +22,7 @@ export function JobSheet({
   onOpenChange,
 }: {
   children?: React.ReactNode;
-  data?: JobDetailModel;
+  data?: CandidateDetailModel;
   isFetching?: boolean;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
@@ -55,10 +55,40 @@ export function JobSheet({
             <>
               <div className="p-2">
                 <div className="text-base font-semibold leading-7 text-gray-900">
-                  Job Name
+                  Candidate Name
                 </div>
                 <p className="text-sm leading-6 text-gray-60">
-                  {data?.job_name ? data?.job_name : "None"}
+                  {data?.candidate_name ? data?.candidate_name : "None"}
+                </p>
+
+                <div className="mt-2 text-base font-semibold leading-7 text-gray-900">
+                  Candidate Email Address
+                </div>
+                <p className="text-sm leading-6 text-gray-60">
+                  {data?.email ? data?.email : "None"}
+                </p>
+
+                <div className="mt-2 text-base font-semibold leading-7 text-gray-900">
+                  Candidate Phone Number
+                </div>
+                <p className="text-sm leading-6 text-gray-60">
+                  {data?.phone_number ? data?.phone_number : "None"}
+                </p>
+
+                <div className="mt-2 text-base font-semibold leading-7 text-gray-900">
+                  Candidate Summary
+                </div>
+                <p className="text-sm leading-6 text-gray-60">
+                  {data?.comment ? data?.comment : "None"}
+                </p>
+
+                <div className="text-base font-semibold leading-7 text-gray-900">
+                  Recommended Jobs
+                </div>
+                <p className="text-sm leading-6 text-gray-60">
+                  {data?.job_recommended
+                    ? data?.job_recommended.join(", ")
+                    : "None"}
                 </p>
 
                 <div className="mt-2 text-base font-semibold leading-7 text-gray-900">
@@ -145,10 +175,17 @@ export function JobSheet({
                 </ul>
 
                 <div className="mt-2 text-base font-semibold leading-7 text-gray-900">
-                  Job Created Date
+                  Candidate CV Name
                 </div>
                 <p className="text-sm leading-6 text-gray-60">
-                  {new Date(data?.created_at).toLocaleDateString()}
+                  {data?.cv_name ? data?.cv_name : "None"}
+                </p>
+
+                <div className="mt-2 text-base font-semibold leading-7 text-gray-900">
+                  Candidate Created Date
+                </div>
+                <p className="text-sm leading-6 text-gray-60">
+                  {data?.created_at ? data?.created_at : "None"}
                 </p>
               </div>
             </>

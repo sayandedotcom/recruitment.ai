@@ -60,7 +60,7 @@ export function useJobDetailData(
   return useQuery({
     queryKey: ["list-job-detail", jobId],
     queryFn: () => getJobDetailAxios(jobId),
-    enabled: !!jobId && jobId !== "",
+    enabled: jobId !== "",
   });
 }
 
@@ -80,9 +80,11 @@ export function useDeleteFAQData(faqId: number): UseMutationResult<any> {
   });
 }
 
-export function useMachingData(jobName: string): UseMutationResult<any> {
+export function useMachingData() {
+  // : UseMutationResult<any>
   return useMutation({
-    mutationFn: () => getMatchingCandidate(jobName),
+    mutationFn: ({ jobName }: { jobName: string }) =>
+      getMatchingCandidate(jobName),
   });
 }
 
@@ -128,7 +130,7 @@ export function useListFileDetailData(
   return useQuery({
     queryKey: ["list-candidate-detail"],
     queryFn: () => getListFileDetailAxios(fileId),
-    enabled: false,
+    enabled: fileId !== "",
   });
 }
 
@@ -139,7 +141,7 @@ export function useMatchingDetailData(
   return useQuery({
     queryKey: ["matching-detail"],
     queryFn: () => getMatchingDetailAxios(candidateId, jobId),
-    enabled: false,
+    enabled: candidateId !== "" && jobId !== "",
   });
 }
 

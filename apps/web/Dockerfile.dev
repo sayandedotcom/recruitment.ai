@@ -1,0 +1,57 @@
+# syntax=docker/dockerfile:1.5.2
+# based on: https://github.com/vercel/turbo/blob/main/examples/with-docker/apps/api/Dockerfile
+
+FROM node:20.9.0-alpine as base
+
+# adding apk deps to avoid node-gyp related errors and some other stuff. adds turborepo globally
+RUN apk add -f --update --no-cache --virtual .gyp nano bash libc6-compat python3 make g++ \
+    && npm install -g turbo \
+    && npm install -g pnpm \
+    && apk del .gyp
+
+#############################################
+FROM base AS pruned
+WORKDIR /app
+ARG APP=web
+
+COPY . .
+
+# see https://turbo.build/repo/docs/reference/command-line-reference#turbo-prune---scopetarget
+RUN turbo prune --scope=$APP --docker
+
+#############################################
+FROM base AS installer
+WORKDIR /app
+ARG APP=web
+
+# Copy the pruned output first
+COPY --from=pruned /app/out/json/ .
+
+# Copy workspace root-level files
+COPY package.json .
+COPY yarn.lock .
+COPY turbo.json .
+
+# Copy the app's package.json
+COPY apps/${APP}/package.json apps/${APP}/package.json
+
+# Install dependencies without using yarn cache (avoids ENOENT issues)
+RUN yarn install --frozen-lockfile --no-cache
+
+# Copy full source tree from pruned output
+COPY --from=pruned /app/out/full/ .
+
+# Build dependencies of the app (but not the app itself)
+RUN turbo run build --no-cache --filter=${APP}^...
+
+# Reinstall to ensure workspace links are resolved
+RUN yarn install --frozen-lockfile --no-cache
+
+#############################################
+FROM base AS runner
+WORKDIR /app
+
+COPY --from=installer /app .
+
+# Use correct app name here or set it via `--build-arg APP=xyz`
+CMD ["turbo", "run", "dev", "--filter=web"]
