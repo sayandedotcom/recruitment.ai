@@ -1,0 +1,122 @@
+# Use a base image for building the dependencies
+FROM python:3.10-slim AS builder
+
+WORKDIR /app
+
+# Update the package lists and install dependencies in a single RUN command
+RUN apt-get update && \
+    apt-get install -y curl gcc python3-dev && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+
+# Upgrade pip and install certifi
+RUN pip install --upgrade pip certifi
+
+COPY requirements.txt ./
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Use a minimal base image for the final stage
+FROM python:3.10-slim
+
+WORKDIR /app
+
+# Copy the installed dependencies from the builder stage
+COPY --from=builder /usr/local/lib/python3.10 /usr/local/lib/python3.10
+COPY --from=builder /usr/local/bin /usr/local/bin
+
+# Set Python environment variables
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONIOENCODING=utf-8
+
+COPY . /app
+
+# Chmod to entrypoint.sh
+RUN chmod +x ./entrypoint.sh
+
+# Run entrypoint.sh
+ENTRYPOINT ["/app/entrypoint.sh"]
+# # apps/api/Dockerfile.dev
+
+# # --- Builder Stage ---
+#   FROM python:3.10-slim AS builder
+
+#   WORKDIR /app
+  
+#   RUN apt-get update && \
+#       apt-get install -y curl gcc python3-dev build-essential && \
+#       apt-get clean && \
+#       rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+  
+#   # Upgrade pip and install certifi
+#   RUN pip install --upgrade pip certifi
+  
+#   COPY apps/api/requirements.txt ./
+#   RUN pip install --no-cache-dir -r requirements.txt
+  
+#   # --- Final Stage ---
+#   FROM python:3.10-slim
+  
+#   WORKDIR /app
+  
+#   COPY --from=builder /usr/local/lib/python3.10 /usr/local/lib/python3.10
+#   COPY --from=builder /usr/local/bin /usr/local/bin
+  
+#   # Environment
+#   ENV PYTHONDONTWRITEBYTECODE=1 \
+#       PYTHONUNBUFFERED=1 \
+#       PYTHONIOENCODING=utf-8
+  
+#   # Copy entrypoint and make it executable
+#   COPY apps/api/entrypoint.sh ./entrypoint.sh
+#   RUN chmod +x ./entrypoint.sh
+
+#   # Copy rest of the application code into /app
+#   COPY apps/api /app
+
+#   # Run the entrypoint script
+#   ENTRYPOINT ["/app/entrypoint.sh"]
+  
+
+# FROM python:3.11-slim
+
+# # Set working directory
+# WORKDIR /app
+
+# # Install system dependencies if needed (optional)
+# # RUN apt-get update && apt-get install -y gcc libpq-dev && rm -rf /var/lib/apt/lists/*
+
+# # Copy and install dependencies first to use cache properly
+# COPY requirements.txt .
+
+# RUN pip install --no-cache-dir --upgrade pip \
+#  && pip install --no-cache-dir -r requirements.txt -i https://pypi.org/simple
+
+# # Now copy the rest of the app
+# COPY . .
+
+# # Optional: prevent .pyc files
+# ENV PYTHONDONTWRITEBYTECODE=1
+# ENV PYTHONUNBUFFERED=1
+
+# # Expose the API port
+# EXPOSE 5005
+
+# # Start the app
+# CMD ["python", "app.py"]
+
+# FROM python:3.11
+
+# WORKDIR /app
+
+# COPY requirements.txt .
+
+# # Fix pip version and index issues
+# RUN pip install --no-cache-dir --upgrade pip \
+#  && pip install --no-cache-dir -r requirements.txt -i https://pypi.org/simple
+
+# COPY . .
+
+# EXPOSE 5005
+# CMD ["python", "app.py"]
