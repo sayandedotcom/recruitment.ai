@@ -108,7 +108,7 @@ Detailed documentation on system architecture, API endpoints, and configuration 
      ```
 
 3. **Get credendials.json file**
-   To use Gmail Toolkit, you will need to set up your credentials explained in the Gmail API docs. Once you've downloaded the credentials.json file, you can start using the Gmail API. Upload the credentials.json file to the root directory of the project.
+   To use Gmail Toolkit, you will need to set up your credentials explained in the Gmail API docs. Once you've downloaded the credentials.json file, you can start using the Gmail API. Upload the credentials.json file to the root directory of the `analysis_service` folder.
 
    ```shell
    https://developers.google.com/workspace/gmail/api/quickstart/python#authorize_credentials_for_a_desktop_application
