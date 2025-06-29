@@ -1,5 +1,7 @@
 # Resume Ranking Application
 
+To know more click [here](https://blogs.sayande.com/filter-resumes-with-agentic-ai-langchain-and-lanhgraph)
+
 ## Feature Overview
 
 - **✅ AI-Powered Recruitment Tool for Intelligent Candidate-Job Matching**
@@ -84,9 +86,9 @@ Click the image above to watch the demo video on YouTube.
   - Consistent output formatting
   - Enhanced control over LLM responses
 
-## Documentation
+<!-- ## Documentation
 
-Detailed documentation on system architecture, API endpoints, and configuration options is available in the [User Guide](./assets/presentation.pdf).
+Detailed documentation on system architecture, API endpoints, and configuration options is available in the [User Guide](./assets/presentation.pdf). -->
 
 ## Getting Started
 
@@ -105,7 +107,14 @@ Detailed documentation on system architecture, API endpoints, and configuration 
      OPENAI_API_KEY="your-key"
      ```
 
-3. **Build and Run**:
+3. **Get credendials.json file**
+   To use Gmail Toolkit, you will need to set up your credentials explained in the Gmail API docs. Once you've downloaded the credentials.json file, you can start using the Gmail API. Upload the credentials.json file to the root directory of the project.
+
+   ```shell
+   https://developers.google.com/workspace/gmail/api/quickstart/python#authorize_credentials_for_a_desktop_application
+   ```
+
+4. **Build and Run**:
 
    ```bash
    cd recruitment.ai
@@ -113,8 +122,8 @@ Detailed documentation on system architecture, API endpoints, and configuration 
    docker compose up
    ```
 
-4. **Access Application**:
-   - Frontend: `http://localhost:8080/`
+5. **Access Application**:
+   - `http://localhost:8080/`
 
 <!-- ## Development
 
