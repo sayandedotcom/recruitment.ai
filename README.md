@@ -9,6 +9,7 @@ To know more click [here](https://blogs.sayande.com/filter-resumes-with-agentic-
 - **🔍 Advanced Resume and Job Description Analysis**
 - **📊 Detailed Scoring and Analysis**
 - **📈 Intelligent Ranking System**
+- **✉️Email Response with Gmail Toolkit**
 
 ## Overview
 
@@ -16,12 +17,12 @@ The Resume Ranking Application is an AI-powered recruitment tool that leverages 
 
 Click the image above to watch the demo video on YouTube.
 
-## Architecture
+## Sequence Diagram
 
 <p align="center">
-  <img src="./assets/architecture.png" alt="Architecture" />
+  <img src="./sequence_diagram.png" alt="Architecture" />
   <br>
-  <em>System Architecture</em>
+  <em>Sequence Diagram</em>
 </p>
 
 ## Key Technologies
@@ -82,9 +83,17 @@ Click the image above to watch the demo video on YouTube.
   - Chain of thought reasoning
 
 - **OpenAI Function Calling**:
+
   - Structured data extraction
   - Consistent output formatting
   - Enhanced control over LLM responses
+  - Consistent formatting for downstream processing
+
+- **LangGraph Workflow**:
+- Workflow automation for complex LLM tasks
+- Integrated Gmail Toolkit for parsing and analyzing email content
+- Derives structured insights from raw email threads
+- Email analysis time: ~2–4 seconds
 
 <!-- ## Documentation
 
