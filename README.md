@@ -20,7 +20,7 @@ Click the image above to watch the demo video on YouTube.
 ## Sequence Diagram
 
 <p align="center">
-  <img src="./sequence_diagram.png" alt="Architecture" />
+  <img src="./assets/sequence_diagram.png" alt="Architecture" />
   <br>
   <em>Sequence Diagram</em>
 </p>
