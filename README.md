@@ -90,10 +90,11 @@ Click the image above to watch the demo video on YouTube.
   - Consistent formatting for downstream processing
 
 - **LangGraph Workflow**:
-- Workflow automation for complex LLM tasks
-- Integrated Gmail Toolkit for parsing and analyzing email content
-- Derives structured insights from raw email threads
-- Email analysis time: ~2–4 seconds
+
+  - Workflow automation for complex LLM tasks
+  - Integrated Gmail Toolkit for parsing and analyzing email content
+  - Derives structured insights from raw email threads
+  - Email analysis time: ~2–4 seconds
 
 <!-- ## Documentation
 
